@@ -58,11 +58,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
@@ -109,5 +109,28 @@ Since this application is multithreaded, both DashMap and Singleton are necessar
 ```
 
 #### Reflection Publisher-2
+
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+```
+In this case, the business logic and data storage are handled by
+"Service" and "Repository" respectively. If these two modules were
+combined into one "Model" like in the MVC pattern then the Single Responsibility Principle and Seperation of Concerns Principle are violated. This reduces the code's extensibility, scalability and maintainability and makes it messier and harder to modify. The code
+is also harder to test. Seperating the modules makes the code more
+adaptable to changes such as change in business logic or databses.
+ 
+```
+
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+```
+As mentioned before, if the Model is only used then it will have two
+functions. The unflexible code and its struct models will be tightly coupled with each other, making it harder to maintain, scale, extend and test. For example, the Notification and Subscriber structs will share so many dependencies that altering the business logic or changing the database might cause bugs or problems in the other. More functions might
+even have to be made to accomodate changes which could be avoided if
+only one Model is not used. 
+```
+
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+```
+With Postman, I can test web endpoints and assess the behavior of the application based on its outputs. I like how API requests can be saved or compiled into collections which allows for easy access and fast testing. One of the helpful features is the mock servers which lets us test frontends without a backend. Another feature is automated testing, which allows faster testing and is helpful in Group Projects where time is limited. The API documentation is especially useful as it can be used by all members in a team. Postman helps me test if the backend is fully prepared and working with realistic user input behaviors.
+```
 
 #### Reflection Publisher-3
