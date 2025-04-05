@@ -63,7 +63,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement subscribe function in Notification controller.`
     -   [x] Commit: `Implement unsubscribe function in Notification service.`
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -134,3 +134,21 @@ With Postman, I can test web endpoints and assess the behavior of the applicatio
 ```
 
 #### Reflection Publisher-3
+
+1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+```
+In this tutorial, the Observer Pattern's Push model is used. All the subscribers immediately receive notifications which are pushed by the Publisher or Notification service whenever they make a change. These changes include create, delete or update of a product. The subscribers do not have to request notifications from the Publisher because it pushes notifications based on subscriber actions.
+```
+
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+```
+If a Pull model is used, the Publisher does not decide when to send notifications but the subscribers do. 
+The advantages include more control for the subscribers, they can decide when and what type of notifications to receive. That way subscribers can request notifications later if they are busy. The Publisher could save resources since it is not active the whole time unlike in the Push model, resulting in faster performance.
+A disadvantage is subscribers have to manually check for update notifications, they could miss out on important or time-sensitive updates such as limited discounts if busy. Moreover, there will be delays if multiple subscribers request simultaneously and repeatedly where a request cooldown feature has to be implemented. 
+
+```
+
+3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+```
+The application will become much slower as it stops other processing notifications while it waits for one to finish. Upcoming notifications are queued before being processed and sent to their respective subscribers. The application will be very unresponsive because of long delays and inefficient at handling large number of subscribers.
+```
